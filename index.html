@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>內湖國小教師晨會資訊站</title>
+  <style>
+    :root {
+      --blue:#1f5f99;
+      --deep:#17324d;
+      --sky:#eaf4ff;
+      --teal:#2f8f8a;
+      --orange:#f4a340;
+      --soft:#f7fbff;
+      --line:#d9e6f2;
+      --text:#1e2b37;
+      --muted:#5f6f80;
+      --red:#d94b4b;
+      --green:#2b8a5a;
+      --card:#ffffff;
+      --shadow:0 10px 28px rgba(27,68,105,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#f4f9ff 0%, #ffffff 26%, #f8fbff 100%);
+    }
+    .page{max-width:1180px;margin:0 auto;padding:36px 28px 60px;}
+    .hero{
+      background:linear-gradient(135deg,#1f5f99 0%, #4ba3d1 58%, #76c7be 100%);
+      color:#fff;border-radius:30px;padding:34px 34px 30px;box-shadow:var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;background:rgba(255,255,255,.14);border-radius:50%;}
+    .eyebrow{font-size:15px;letter-spacing:1px;font-weight:700;opacity:.95;margin-bottom:10px;}
+    .hero h1{margin:0;font-size:36px;line-height:1.25;font-weight:900;position:relative;z-index:1;}
+    .hero p{margin:12px 0 0;font-size:17px;line-height:1.7;max-width:760px;position:relative;z-index:1;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;position:relative;z-index:1;}
+    .pill{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);padding:10px 16px;border-radius:999px;font-size:15px;font-weight:700;}
+    .section{margin-top:28px;}
+    .section-title{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:26px;font-weight:900;color:var(--deep);}
+    .section-title .dot{width:16px;height:16px;border-radius:50%;background:var(--orange);display:inline-block;}
+    .section-sub{margin:-4px 0 14px;color:var(--muted);font-size:15px;line-height:1.6;}
+    .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);}
+    .todo-list,.deadline-list,.mini-list{display:grid;gap:12px;}
+    .todo-item,.deadline-item,.mini-item{border-radius:18px;padding:14px 16px;background:var(--soft);border:1px solid #e6f0f7;}
+    .todo-item strong,.deadline-item strong,.mini-item strong{display:block;font-size:16px;margin-bottom:4px;color:var(--deep);}
+    .todo-item span,.deadline-item span,.mini-item span{font-size:14px;line-height:1.6;color:var(--muted);}
+    .deadline-item{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;}
+    .date-badge{min-width:78px;text-align:center;background:#fff;color:var(--red);border:1px solid #f2d4d4;border-radius:16px;padding:10px 8px;font-weight:900;line-height:1.1;}
+    .date-badge small{display:block;font-size:12px;color:#b86565;margin-top:5px;}
+    .dept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+    .dept-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;}
+    .dept-head{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+    .dept-title{font-size:22px;font-weight:900;color:var(--deep);margin:0;}
+    .dept-tag{font-size:13px;font-weight:800;color:#fff;background:var(--teal);padding:7px 12px;border-radius:999px;white-space:nowrap;}
+    .dept-card ul{margin:0;padding-left:18px;line-height:1.8;color:var(--text);font-size:15px;}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px;}
+    .btn{display:inline-block;padding:11px 14px;border-radius:14px;text-decoration:none;font-size:14px;font-weight:800;}
+    .btn.primary{background:var(--blue);color:#fff;}
+    .btn.secondary{background:#edf5fb;color:var(--blue);border:1px solid #cddff0;}
+    .btn.ghost{background:#fff4e7;color:#a05a00;border:1px solid #f7d6a8;}
+    .attachment-grid,.history-grid,.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .small-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;min-height:150px;}
+    .small-card h4{margin:0;font-size:18px;color:var(--deep);}
+    .small-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.7;}
+    .footer-note{margin-top:26px;padding:18px 20px;background:#fffdf4;border:1px dashed #e5c97a;border-radius:18px;color:#7a5b19;font-size:14px;line-height:1.8;}
+    .update-box{background:#eef7ff;border:1px dashed #9ac2e7;border-radius:20px;padding:18px 20px;}
+    .update-box h3{margin:0 0 10px;font-size:18px;color:var(--deep);}
+    .update-box ol{margin:0;padding-left:20px;line-height:1.8;font-size:14px;color:var(--muted);}
+    .status-ok{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800;background:#e8f7ef;color:var(--green);}
+    .status-review{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800;background:#fff3e3;color:#b26a07;}
+    @media (max-width: 980px){
+      .grid-2,.dept-grid,.attachment-grid,.history-grid,.link-grid{grid-template-columns:1fr;}
+      .hero h1{font-size:30px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="eyebrow">臺北市內湖國小｜教師晨會資訊站</div>
+      <h1>115學年度第1學期｜9/15 第4次教師晨會</h1>
+      <p>每週教師晨會重點、截止日、各處室報告與附件集中整理於此，方便同仁快速查閱並直接開啟原始資料。</p>
+      <div class="pill-row">
+        <div class="pill">本週資料：9/15 第4次教師晨會</div>
+        <div class="pill">資料更新：9/14</div>
+        <div class="pill">主要處室：教務處・學務處・總務處・輔導室</div>
+      </div>
+    </section>
+
+    
+
+
+    <section class="section">
+      <h2 class="section-title"><span class="dot"></span>各處室摘要與原始文件</h2>
+      <p class="section-sub">各處室重點摘要如下，詳細內容可直接開啟原始 PDF 或本週資料夾。</p>
+      <div class="dept-grid">
+        <article class="dept-card">
+          <div class="dept-head">
+            <h3 class="dept-title">教務處</h3>
+            <span class="dept-tag">本週資料</span>
+          </div>
+          <ul>
+            <li>獎勵教師獎金推薦與身心調適假課務處理原則。</li>
+            <li>單週游泳課表、本週各類競賽與作品徵件提醒。</li>
+            <li>9/16、9/24 前有多項行政期限。</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="https://drive.google.com/file/d/1M1rEOep_yN6SqMqJ4kwahO9uLx5BTcmf/view?usp=drivesdk" target="_blank">原始 PDF</a>
+            <a class="btn secondary" href="https://drive.google.com/file/d/1TFK2GXsxOwQ-rD75N93y0If4iVF1b_Wv/view?usp=drivesdk" target="_blank">教務附件</a>
+            <a class="btn ghost" href="https://drive.google.com/drive/folders/1k2IVRc-GSv4FHKAuLRgWrXk2fDsLvNeM" target="_blank">本週資料夾</a>
+          </div>
+        </article>
+        <article class="dept-card">
+          <div class="dept-head">
+            <h3 class="dept-title">學務處</h3>
+            <span class="dept-tag">本週資料</span>
+          </div>
+          <ul>
+            <li>導護志工表、防災與警報演練資訊。</li>
+            <li>防身警報器抽查、反毒宣導、低碳通學活動。</li>
+            <li>教師最需要先注意的是 9/16 前導護志工相關表件。</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="https://drive.google.com/file/d/129LXJFJnTmGeb9xyNhlwuu9T-Z-0euhi/view?usp=drivesdk" target="_blank">原始 PDF</a>
+            <a class="btn secondary" href="https://drive.google.com/file/d/1QSgPi0sTQ-vby6Pe8brZV_H3zqcy9cpm/view?usp=drivesdk" target="_blank">魔術方塊附件</a>
+            <a class="btn ghost" href="https://drive.google.com/drive/folders/1k2IVRc-GSv4FHKAuLRgWrXk2fDsLvNeM" target="_blank">本週資料夾</a>
+          </div>
+        </article>
+        <article class="dept-card">
+          <div class="dept-head">
+            <h3 class="dept-title">總務處</h3>
+            <span class="dept-tag">本週資料</span>
+          </div>
+          <ul>
+            <li>三／四聯單繳費期間與校外教學車資作業。</li>
+            <li>文康活動經費處理與行政服務提醒。</li>
+            <li>請特別留意各項繳費期間與校外教學車資作業。</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="https://drive.google.com/file/d/1kmtyzcYaj4uL3qJWBAUnkRseQhpUbLut/view?usp=drivesdk" target="_blank">原始 PDF</a>
+            <a class="btn secondary" href="https://www.nhes.tp.edu.tw/nss/p/AdministrativeServices" target="_blank">行政服務</a>
+            <a class="btn ghost" href="https://drive.google.com/drive/folders/1k2IVRc-GSv4FHKAuLRgWrXk2fDsLvNeM" target="_blank">本週資料夾</a>
+          </div>
+        </article>
+        <article class="dept-card">
+          <div class="dept-head">
+            <h3 class="dept-title">輔導室</h3>
+            <span class="dept-tag">本週資料</span>
+          </div>
+          <ul>
+            <li>親子桌遊、轉學生與新生適應、教師節活動。</li>
+            <li>特殊生提報、資優鑑定與家長代表作業。</li>
+            <li>另有親子、資優與家長代表相關事項，請導師留意。</li>
+          </ul>
+          <div class="actions">
+            <a class="btn primary" href="https://drive.google.com/file/d/18RMe5hhHKi5Q8Z6tuD7aIS2KR-t3GoOL/view?usp=drivesdk" target="_blank">原始 PDF</a>
+            <a class="btn secondary" href="https://drive.google.com/drive/folders/1k2IVRc-GSv4FHKAuLRgWrXk2fDsLvNeM" target="_blank">相關附件</a>
+            <a class="btn ghost" href="https://drive.google.com/drive/folders/1k2IVRc-GSv4FHKAuLRgWrXk2fDsLvNeM" target="_blank">本週資料夾</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <h2 class="section-title"><span class="dot"></span>本週先做這些</h2>
+      <p class="section-sub">本週重要待辦與截止時間集中整理如下，詳細內容請以各處室原始資料為準。</p>
+      <div class="card">
+          <div class="todo-list">
+            <div class="todo-item"><strong>9/16 中午前完成導護志工表與校內收件</strong><span>學務處班級導護志工表、自編故事收件請於指定時限前完成繳交。</span></div>
+            <div class="todo-item"><strong>9/16 16:00 前完成圖書館入館登記</strong><span>有使用需求的班級請完成圖書館入館時間登記。</span></div>
+            <div class="todo-item"><strong>9/18 前完成重要推薦與提報</strong><span>包含獎勵教師獎金推薦、特殊生鑑定安置提報，以及校外教學車資作業。</span></div>
+            <div class="todo-item"><strong>9/24 前完成競賽與作品相關作業</strong><span>多語文競賽、聯想創作、高年級作文、教學軟體需求等多項期限集中於 9/24 前。</span></div>
+          </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+      <h2 class="section-title"><span class="dot"></span>截止日雷達</h2>
+      <p class="section-sub">請依截止日期完成相關繳交、登記與申請。</p>
+      <div class="card">
+        <div class="deadline-list">
+          <div class="deadline-item"><div class="date-badge">9/16<small>週三</small></div><div><strong>導護志工表、自編故事、圖書館入館登記</strong><span>整合學務處與教務處本週教師最需要注意的收件與登記期限。</span></div></div>
+          <div class="deadline-item"><div class="date-badge">9/18<small>週五</small></div><div><strong>特殊生提報、校外教學車資、教師獎金推薦</strong><span>請依各處室說明完成繳交與提報。</span></div></div>
+          <div class="deadline-item"><div class="date-badge">9/21<small>週一</small></div><div><strong>資優縮短修業年限申請截止</strong><span>輔導室與特教組相關申請作業期限。</span></div></div>
+          <div class="deadline-item"><div class="date-badge">9/24<small>週四</small></div><div><strong>多語文競賽、聯想創作、作文與教學需求</strong><span>教務處集中期限，建議在首頁持續醒目顯示。</span></div></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <h2 class="section-title"><span class="dot"></span>附件快速入口</h2>
+      <p class="section-sub">本週重要附件集中於此，可直接開啟查閱。</p>
+      <div class="attachment-grid">
+        <div class="small-card"><span class="status-ok">附件</span><h4>身心調適假課務處理原則</h4><p>教務處重要公告，請有需要的教師直接開啟查閱。</p><a class="btn secondary" href="https://drive.google.com/file/d/1TFK2GXsxOwQ-rD75N93y0If4iVF1b_Wv/view?usp=drivesdk" target="_blank">開啟附件</a></div>
+        <div class="small-card"><span class="status-ok">附件</span><h4>魔術方塊競賽實施計畫</h4><p>競賽實施計畫與報名相關資訊。</p><a class="btn secondary" href="https://drive.google.com/file/d/1QSgPi0sTQ-vby6Pe8brZV_H3zqcy9cpm/view?usp=drivesdk" target="_blank">開啟附件</a></div>
+        <div class="small-card"><span class="status-ok">附件</span><h4>國際無車日肖像授權同意書</h4><p>需通知或取得家長授權時使用。</p><a class="btn secondary" href="https://drive.google.com/file/d/1I82EWXNCi-XJk45CVk6iqyjZTMhRsj-B/view?usp=drivesdk" target="_blank">開啟附件</a></div>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <h2 class="section-title"><span class="dot"></span>歷次教師晨會</h2>
+      <p class="section-sub">可由此查閱本週及前幾次教師晨會資料。</p>
+      <div class="history-grid">
+        <div class="small-card"><span class="status-review">最新</span><h4>09/15｜第4次教師晨會</h4><p>9/15 第4次教師晨會完整資料夾。</p><a class="btn primary" href="https://drive.google.com/drive/folders/1k2IVRc-GSv4FHKAuLRgWrXk2fDsLvNeM" target="_blank">查看本週資料</a></div>
+        <div class="small-card"><span class="status-ok">歷次</span><h4>09/08｜第3次教師晨會</h4><p>9/08 第3次教師晨會資料。</p><a class="btn secondary" href="https://drive.google.com/drive/folders/1iu1wEuIiliexe-lHadbTzs9ruouow9x-" target="_blank">查看資料</a></div>
+        <div class="small-card"><span class="status-ok">歷次</span><h4>09/01｜第2次教師晨會</h4><p>9/01 第2次教師晨會資料。</p><a class="btn secondary" href="https://drive.google.com/drive/folders/1Fn5lWNJfMFTVJizSIK1YH_0BCzM2meBb" target="_blank">查看資料</a></div>
+      </div>
+    </section>
+
+
+    <section class="section">
+      <h2 class="section-title"><span class="dot"></span>教師常用入口</h2>
+      <div class="link-grid">
+        <div class="small-card"><h4>教師晨會總資料夾</h4><p>115學年度教師晨會資料集中存放處。</p><a class="btn primary" href="https://drive.google.com/drive/folders/1DRJpT_ZKSKgt0E32hLTCriK7-LMlgNFz" target="_blank">開啟資料夾</a></div>
+        <div class="small-card"><h4>學校行政服務</h4><p>文具請領、行政表單與常用校務服務。</p><a class="btn primary" href="https://www.nhes.tp.edu.tw/nss/p/AdministrativeServices" target="_blank">開啟連結</a></div>
+        <div class="small-card"><h4>學校粉絲專頁／公告</h4><p>學校活動與最新消息。</p><a class="btn primary" href="https://www.facebook.com/profile.php?id=100078190135847" target="_blank">開啟連結</a></div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      臺北市內湖國民小學｜教師晨會資訊站
+    </div>
+  </div>
+</body>
+</html>
