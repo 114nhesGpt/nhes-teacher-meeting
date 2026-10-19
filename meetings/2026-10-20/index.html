@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>內湖國小教師晨會資訊站</title>
+  <style>
+    :root {
+      --blue:#1f5f99;
+      --deep:#17324d;
+      --sky:#eaf4ff;
+      --teal:#2f8f8a;
+      --orange:#f4a340;
+      --soft:#f7fbff;
+      --line:#d9e6f2;
+      --text:#1e2b37;
+      --muted:#5f6f80;
+      --red:#d94b4b;
+      --green:#2b8a5a;
+      --card:#ffffff;
+      --shadow:0 10px 28px rgba(27,68,105,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#f4f9ff 0%, #ffffff 26%, #f8fbff 100%);
+    }
+    .page{max-width:1180px;margin:0 auto;padding:36px 28px 60px;}
+    .hero{
+      background:linear-gradient(135deg,#1f5f99 0%, #4ba3d1 58%, #76c7be 100%);
+      color:#fff;border-radius:30px;padding:34px 34px 30px;box-shadow:var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;background:rgba(255,255,255,.14);border-radius:50%;}
+    .eyebrow{font-size:15px;letter-spacing:1px;font-weight:700;opacity:.95;margin-bottom:10px;}
+    .hero h1{margin:0;font-size:36px;line-height:1.25;font-weight:900;position:relative;z-index:1;}
+    .hero p{margin:12px 0 0;font-size:17px;line-height:1.7;max-width:760px;position:relative;z-index:1;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;position:relative;z-index:1;}
+    .pill{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);padding:10px 16px;border-radius:999px;font-size:15px;font-weight:700;}
+    .section{margin-top:28px;}
+    .section-title{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:26px;font-weight:900;color:var(--deep);}
+    .section-title .dot{width:16px;height:16px;border-radius:50%;background:var(--orange);display:inline-block;}
+    .section-sub{margin:-4px 0 14px;color:var(--muted);font-size:15px;line-height:1.6;}
+    .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);}
+    .todo-list,.deadline-list,.mini-list{display:grid;gap:12px;}
+    .todo-item,.deadline-item,.mini-item{border-radius:18px;padding:14px 16px;background:var(--soft);border:1px solid #e6f0f7;}
+    .todo-item strong,.deadline-item strong,.mini-item strong{display:block;font-size:16px;margin-bottom:4px;color:var(--deep);}
+    .todo-item span,.deadline-item span,.mini-item span{font-size:14px;line-height:1.6;color:var(--muted);}
+    .deadline-item{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;}
+    .date-badge{min-width:78px;text-align:center;background:#fff;color:var(--red);border:1px solid #f2d4d4;border-radius:16px;padding:10px 8px;font-weight:900;line-height:1.1;}
+    .date-badge small{display:block;font-size:12px;color:#b86565;margin-top:5px;}
+    .dept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+    .dept-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;}
+    .dept-head{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+    .dept-title{font-size:22px;font-weight:900;color:var(--deep);margin:0;}
+    .dept-tag{font-size:13px;font-weight:800;color:#fff;background:var(--teal);padding:7px 12px;border-radius:999px;white-space:nowrap;}
+    .dept-card ul{margin:0;padding-left:18px;line-height:1.8;color:var(--text);font-size:15px;}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px;}
+    .btn{display:inline-block;padding:11px 14px;border-radius:14px;text-decoration:none;font-size:14px;font-weight:800;}
+    .btn.primary{background:var(--blue);color:#fff;}
+    .btn.secondary{background:#edf5fb;color:var(--blue);border:1px solid #cddff0;}
+    .btn.ghost{background:#fff4e7;color:#a05a00;border:1px solid #f7d6a8;}
+    .attachment-grid,.history-grid,.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .small-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;min-height:150px;}
+    .small-card h4{margin:0;font-size:18px;color:var(--deep);}
+    .small-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.7;}
+    .footer-note{margin-top:26px;padding:18px 20px;background:#fffdf4;border:1px dashed #e5c97a;border-radius:18px;color:#7a5b19;font-size:14px;line-height:1.8;}
+    .update-box{background:#eef7ff;border:1px dashed #9ac2e7;border-radius:20px;padding:18px 20px;}
+    .update-box h3{margin:0 0 10px;font-size:18px;color:var(--deep);}
+    .update-box ol{margin:0;padding-left:20px;line-height:1.8;font-size:14px;color:var(--muted);}
+    .status-ok{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800;background:#e8f7ef;color:var(--green);}
+    .status-review{display:inline-block;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800;background:#fff3e3;color:#b26a07;}
+    @media (max-width: 980px){
+      .grid-2,.dept-grid,.attachment-grid,.history-grid,.link-grid{grid-template-columns:1fr;}
+      .hero h1{font-size:30px;}
+    }
+  </style>
+</head>
+<body><div class="page"><section class="hero"><div class="eyebrow">臺北市內湖國小｜教師晨會資訊站</div><h1>115學年度第1學期｜10/20 第9次教師晨會</h1><p>每週教師晨會重點、截止日、各處室報告與附件集中整理於此，方便同仁快速查閱並直接開啟原始資料。</p><div class="pill-row"><div class="pill">本週資料：10/20 第9次教師晨會</div><div class="pill">來源資料更新：10/19</div><div class="pill">主要處室：教務處・學務處・總務處・輔導室</div></div></section><section class="section"><h2 class="section-title"><span class="dot"></span>各處室摘要與原始文件</h2><p class="section-sub">依 10/20 四處室原始報告及附件整理，詳細辦理方式以原始文件及處室通知為準。</p><div class="dept-grid"><article class="dept-card"><div class="dept-head"><h3 class="dept-title">教務處</h3><span class="dept-tag">本週資料</span></div><ul><li>本週英語之星為 15、23 號；一年級請發小小美術家護照並提醒填妥班級、座號、姓名；各班協助轉發台語家庭計畫貼紙。</li><li>10/21（三）第八群組研習於麗山國小，請先報名並備酷課雲 APP 掃碼報到；10/22（四）13:00–15:00 低年級雙語備課會議。</li><li>萬聖節尋寶活動為 10/22–10/30：低年級在綠大地二樓走廊，中高年級在學務處前廣場；10/30（五）前以班級為單位繳回學習單，11/2–11/6 發獎勵。</li><li>三至六年級每月讀報改為線上閱讀與作答，自由參加；本週發活動通知，亦可由導師以平板引導。</li><li>本次更換電腦的四位同仁請於 10/23（五）前完成備份，名單見原始 PDF；平時定期備份，重要檔案避免僅存 C 槽與桌面。</li><li>各學年導師與英語科教師，每學期登入學習扶助科技化評量系統至少 5 次；課後照顧班溢收午餐及照顧費預計月底前退還，依撥款及貼紙通知。</li><li>學年建議回覆及作業調閱調整見原報告；家長簽章改為提醒家長簽章，請保留紙本或通訊紀錄。校外人士識別與校園安全請共同留意。</li></ul><div class="actions"><a class="btn secondary" href="https://drive.google.com/file/d/1scx5gfEt1BCetgWNsuKqaZ_8qARktrzt/view" target="_blank" rel="noopener noreferrer">原始 PDF</a><a class="btn secondary" href="https://drive.google.com/drive/folders/1g3cyQS592esE4eMp-zfFTnpZuPelHWrB" target="_blank" rel="noopener noreferrer">本週資料夾</a></div></article><article class="dept-card"><div class="dept-head"><h3 class="dept-title">學務處</h3><span class="dept-tag">本週資料</span></div><ul><li>本週防身警報器抽查 107、207、307、407、507、607，補抽查 501、502、602。</li><li>10/20（二）08:35–10:05 六年級法治教育於四樓演藝廳；07:50–14:10 CPR＆AED 教學於多功能教室，各班依排程參加。</li><li>10/20 模範生名單填報截止；10/21 發紙本名單，導師須於當天下班前簽名確認。三至六年級於 10/30（五）前交級會記錄簿。</li><li>10/21（三）一、四年級尿液初檢，早自習送至健康中心；10/23（五）08:35–10:05 一年級及轉學生於團輔室做心音心電圖檢查。</li><li>已填流感疫苗意願而未於本校接種、需補開接種單的教職員，請於 10/23（五）前至衛生組登記。</li><li>10/20 合唱團市賽從第三大節公假，中午在合唱教室用餐；10/25 客語兒歌決賽。舞蹈彩排 10/28 從 10:20 公假、午餐統一購置，11/4 比賽整日公假。</li><li>10/22（四）603 班赴新湖國小定點投籃比賽，07:50 集合、預定 11:30 返校；10/23–10/24 中正盃田徑賽於臺北田徑場。</li></ul><div class="actions"><a class="btn secondary" href="https://drive.google.com/file/d/1B0O1GBUIWLm_DdXzc-x5OUQSp3V4aW7-/view" target="_blank" rel="noopener noreferrer">原始 PDF</a><a class="btn secondary" href="https://drive.google.com/drive/folders/1g3cyQS592esE4eMp-zfFTnpZuPelHWrB" target="_blank" rel="noopener noreferrer">本週資料夾</a></div></article><article class="dept-card"><div class="dept-head"><h3 class="dept-title">總務處</h3><span class="dept-tag">本週資料</span></div><ul><li>忠勤樓屋頂工程截至 10/15 實際進度 77.78%；本週進行防水、內部及外圍油漆作業，預計下週竣工。</li><li>10/23（五）10:10–11:10 建築管理工程處於孝悌樓參訪，請提醒學生禮貌及應對禮儀。</li><li>遊戲場因毛毛蟲問題暫時封閉，預計本週末安排處理；請提醒學生勿進入該區玩耍。</li><li>孝悌樓北側 1F、2F 教室窗簾改於 10/25（日）、10/26（一）安裝，請相關班級配合。</li><li>10/27（二）六年級校外教學調整上下車位置：半天 8 車於校門口上下車，去程部分車輛入校、回程不入校；全天 603、604 於文德路上車，回程於文德路或元大銀行文德分行前下車，依當日通知。</li></ul><div class="actions"><a class="btn secondary" href="https://drive.google.com/file/d/1WuvWXFKgwx6jYRfxIK9oKc-C7ZajEFq1/view" target="_blank" rel="noopener noreferrer">原始 PDF</a><a class="btn secondary" href="https://drive.google.com/drive/folders/1g3cyQS592esE4eMp-zfFTnpZuPelHWrB" target="_blank" rel="noopener noreferrer">本週資料夾</a></div></article><article class="dept-card"><div class="dept-head"><h3 class="dept-title">輔導室</h3><span class="dept-tag">本週資料</span></div><ul><li>教師諮商輔導支持服務每學年以 8 次為原則，特殊情形經評估可增至 12 次；透過教師研習中心信箱申請，服務與作業要點詳見附件。</li><li>10/23（五）07:50 一年級晨光課輔改至 STEAM 教室，由六年級學生協助帶隊。</li><li>10/23（五）18:30–20:30 親職講座「網路時代的定海神針」於平靜樓二樓 STEAM 教室，教師可線上參與性平研習，18:00 起酷課 APP 簽到。</li><li>性平研習時數不足的同仁，10/28（三）下午自行線上研習並將證明放至輔導室資料夾。</li><li>10/24（六）09:00–12:00「親子共玩～體驗教育」於 STEAM 教室。</li><li>依期初 IEP 決議需在資源班考段考者，試卷由特教組與資源班統一發放，導師提醒學生準時到班。</li><li>11/4（三）13:30 資優初選，預計 10/23 公告、10/26 發通知；借用視聽、STEAM、雙英 3–5 及諮商室，當日 12:30 前淨空學生桌抽屜與黑板。</li></ul><div class="actions"><a class="btn secondary" href="https://drive.google.com/file/d/18vFpiCqZi6w5FTliZHaeAb9_HNDQU--r/view" target="_blank" rel="noopener noreferrer">原始 PDF</a><a class="btn secondary" href="https://drive.google.com/drive/folders/1g3cyQS592esE4eMp-zfFTnpZuPelHWrB" target="_blank" rel="noopener noreferrer">本週資料夾</a></div></article></div></section><section class="section"><h2 class="section-title"><span class="dot"></span>本週先做這些</h2><div class="card"><div class="todo-list"><div class="todo-item"><strong>完成模範生填報與確認</strong><span>10/20 填報截止；10/21 收紙本名單後，於下班前簽名確認。</span></div><div class="todo-item"><strong>準備健康檢查與疫苗補單</strong><span>10/21 早自習送尿液；10/23 依通知做心音心電圖檢查，需疫苗補單者同日前登記。</span></div><div class="todo-item"><strong>報名研習、預留會議時間</strong><span>10/21 群組研習先報名並備 APP；10/22 低年級雙語備課；10/23 晚間親職講座。</span></div><div class="todo-item"><strong>備份電腦並繳交活動資料</strong><span>換機同仁 10/23 前完成備份；10/30 前交萬聖節學習單及三至六年級級會記錄簿。</span></div><div class="todo-item"><strong>提醒校園安全及活動動線</strong><span>遊戲場暫停使用；配合 10/25–10/26 窗簾安裝，留意 10/27 六年級上下車地點調整。</span></div></div></div></section><section class="section"><h2 class="section-title"><span class="dot"></span>截止日雷達</h2><div class="card"><div class="deadline-list"><div class="deadline-item"><div class="date-badge">10/20<small>週二</small></div><div><strong>模範生名單填報截止</strong><span>六年級法治教育及 CPR＆AED 依班級排程；合唱團第三大節起公假。</span></div></div><div class="deadline-item"><div class="date-badge">10/21<small>週三</small></div><div><strong>模範生名單簽名、尿液初檢與研習</strong><span>下班前完成名單簽名；早自習將一、四年級尿液送健康中心；群組研習於麗山國小。</span></div></div><div class="deadline-item"><div class="date-badge">10/22<small>週四</small></div><div><strong>雙語備課、萬聖節活動開始</strong><span>13:00–15:00 低年級雙語備課；603 班投籃比賽 07:50 集合。</span></div></div><div class="deadline-item"><div class="date-badge">10/23<small>週五</small></div><div><strong>電腦備份、疫苗補單與親職講座</strong><span>備份與補單登記截止；08:35–10:05 心音心電圖檢查，10:10–11:10 外賓參訪；18:30–20:30 親職講座，18:00 起簽到。</span></div></div><div class="deadline-item"><div class="date-badge">10/24<small>週六</small></div><div><strong>親子共玩體驗教育</strong><span>09:00–12:00 於 STEAM 教室；中正盃田徑賽為 10/23–10/24。</span></div></div><div class="deadline-item"><div class="date-badge">10/25<small>週日</small></div><div><strong>窗簾安裝、合唱團決賽</strong><span>窗簾安裝為 10/25–10/26；合唱團參加客語兒歌決賽。</span></div></div><div class="deadline-item"><div class="date-badge">10/26<small>週一</small></div><div><strong>資優初選通知預計發放</strong><span>同日續辦孝悌樓北側 1F、2F 窗簾安裝。</span></div></div><div class="deadline-item"><div class="date-badge">10/27<small>週二</small></div><div><strong>六年級校外教學</strong><span>上下車位置依總務處最新安排；半天班與全天 603、604 的位置不同。</span></div></div><div class="deadline-item"><div class="date-badge">10/28<small>週三</small></div><div><strong>性平補研習、舞蹈彩排</strong><span>時數不足者下午線上研習並附證明；舞蹈學生 10:20 起公假，午餐由學務處安排。</span></div></div><div class="deadline-item"><div class="date-badge">10/30<small>週五</small></div><div><strong>萬聖節學習單、級會記錄簿截止</strong><span>學習單以班級交教務處；三至六年級級會記錄簿交學務處。</span></div></div><div class="deadline-item"><div class="date-badge">11/04<small>週三</small></div><div><strong>資優初選、舞蹈比賽</strong><span>借用教室 12:30 前淨空桌抽屜及黑板，13:30 資優初選；舞蹈學生整日公假。</span></div></div></div></div></section><section class="section" id="school-calendar"><h2 class="section-title"><span class="dot"></span>行事曆</h2><div class="card"><iframe title="學校行事曆－待辦事項（議程）" src="https://calendar.google.com/calendar/embed?src=c_22503b7fefa509a7af882dab1da4f7308c5cad8d9135fceb5172682ce77abe75%40group.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=AGENDA&amp;hl=zh_TW&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0" style="display:block;width:100%;height:600px;border:0;border-radius:14px;" loading="lazy"></iframe><div class="actions"><a class="btn secondary" href="https://calendar.google.com/calendar/embed?src=c_22503b7fefa509a7af882dab1da4f7308c5cad8d9135fceb5172682ce77abe75%40group.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=AGENDA&amp;hl=zh_TW&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0" target="_blank" rel="noopener noreferrer">開啟完整行事曆</a></div></div></section><section class="section"><h2 class="section-title"><span class="dot"></span>附件快速入口</h2><div class="attachment-grid"><div class="small-card"><h4>本週四處室原始文件</h4><p>10/20 第9次教師晨會四份報告與輔導室附件。</p><a class="btn secondary" href="https://drive.google.com/drive/folders/1g3cyQS592esE4eMp-zfFTnpZuPelHWrB" target="_blank" rel="noopener noreferrer">開啟本週資料夾</a></div><div class="small-card"><h4>教師諮商支持服務</h4><p>115 學年度服務資訊、合作心理師及時段。</p><a class="btn secondary" href="https://drive.google.com/file/d/1o541g9aZfGhsTxn-jBjxH090cCY9QkIZ/view" target="_blank" rel="noopener noreferrer">開啟附件</a></div><div class="small-card"><h4>教師諮商服務作業要點</h4><p>申請資格、服務次數、保密原則與申請規範。</p><a class="btn secondary" href="https://drive.google.com/file/d/1woBeGnK-HTTVqM8tMY39ceZQ3lwlmYbO/view" target="_blank" rel="noopener noreferrer">開啟附件</a></div><div class="small-card"><h4>輔導室附件資料夾</h4><p>集中查看本週教師支持服務附件。</p><a class="btn secondary" href="https://drive.google.com/drive/folders/1jesrucNZPUXEFEDY5j-QKEET0kBj6vVm" target="_blank" rel="noopener noreferrer">開啟資料夾</a></div><div class="small-card"><h4>親職講座線上會議</h4><p>10/23 18:30–20:30；教師 18:00 起使用酷課 APP 簽到。</p><a class="btn secondary" href="https://meet.google.com/idt-miej-fkm" target="_blank" rel="noopener noreferrer">進入線上會議</a></div></div></section><section class="section"><h2 class="section-title"><span class="dot"></span>歷次教師晨會</h2><div class="history-grid"><div class="small-card"><h4>10/20｜第9次教師晨會</h4><p>本次晨會摘要、待辦與原始文件。</p><a class="btn secondary" href="/meetings/2026-10-20/index.html" target="_blank" rel="noopener noreferrer">查看晨會網頁</a></div><div class="small-card"><h4>10/13｜第8次教師晨會</h4><p>本次晨會摘要、待辦與原始文件。</p><a class="btn secondary" href="/meetings/2026-10-13/index.html">查看晨會網頁</a></div><div class="small-card"><h4>10/06｜第7次教師晨會</h4><p>本次晨會摘要、待辦與原始文件。</p><a class="btn secondary" href="/meetings/2026-10-06/index.html">查看晨會網頁</a></div><div class="small-card"><h4>09/29｜第6次教師晨會</h4><p>保留本次晨會摘要、待辦與原始文件連結。</p><a class="btn secondary" href="/meetings/2026-09-29/index.html">查看晨會網頁</a></div><div class="small-card"><h4>09/22｜第5次教師晨會</h4><p>保留本次晨會摘要、待辦與原始文件連結。</p><a class="btn secondary" href="/meetings/2026-09-22/index.html">查看晨會網頁</a></div><div class="small-card"><h4>09/15｜第4次教師晨會</h4><p>保留本次晨會摘要、待辦與原始文件連結。</p><a class="btn secondary" href="/meetings/2026-09-15/index.html">查看晨會網頁</a></div><div class="small-card"><h4>更早晨會資料</h4><p>查閱雲端硬碟已歸檔資料。</p><a class="btn secondary" href="https://drive.google.com/drive/folders/1TQiIdPcClfb7MQiEp-ZBq5d8Plu599Jn" target="_blank" rel="noopener noreferrer">開啟歷次資料夾</a></div></div></section><section class="section">
+      <h2 class="section-title"><span class="dot"></span>教師常用入口</h2>
+      <div class="link-grid">
+        <div class="small-card"><h4>教師晨會總資料夾</h4><p>115學年度教師晨會資料集中存放處。</p><a class="btn primary" href="https://drive.google.com/drive/folders/1DRJpT_ZKSKgt0E32hLTCriK7-LMlgNFz" target="_blank">開啟資料夾</a></div>
+        <div class="small-card"><h4>歷次教師晨會資料</h4><p>查閱已歸檔的教師晨會資料夾。</p><a class="btn primary" href="https://drive.google.com/drive/folders/1TQiIdPcClfb7MQiEp-ZBq5d8Plu599Jn" target="_blank">開啟資料夾</a></div>
+        <div class="small-card"><h4>學校行政服務</h4><p>文具請領、行政表單與常用校務服務。</p><a class="btn primary" href="https://www.nhes.tp.edu.tw/nss/p/AdministrativeServices" target="_blank">開啟連結</a></div>
+      </div>
+    </section><div class="footer-note">臺北市內湖國民小學｜教師晨會資訊站</div></div></body></html>
